@@ -1,0 +1,120 @@
+*{
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+/*-------------- HEADER --------------*/
+header{
+    width: 100vw;
+    height: 89px;
+    background-color: #404EED;
+    display: flex;
+    align-items: center;
+}
+header img {
+    display: flex;
+    margin-left: 80px;
+}
+
+/*-------------- MAIN --------------*/
+
+main{
+    display: flex;
+    flex-direction: row;
+
+}
+.esquerda {
+    width: 50%;
+    height: 785px;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.compras{
+    width: 400.35px;
+    height: 706.36px;
+    background-color: aquamarine;
+}
+
+.direita {
+    width: 50%;
+    height: 785px;
+    background-color: #404EED;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*-------------- FOOTER --------------*/
+
+footer{
+    width: 100vw;
+    height: 342px;
+    background-color: #f2f2f2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+footer >p{
+    width: 174px;
+    height: 28px;
+    margin-left: 121.99px;
+    margin-bottom: 15.21px;
+    color: #232323;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 28px;
+    text-align: center;
+    display: flex;
+    overflow-y: hidden;
+}
+
+.ultimos-pedidos{
+    width: 1074.17px;
+    height: 236.47px;
+    margin-left: 118.76px; ;
+    background-color: #F2F2F2;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.propaganda{
+    width: 201.69px;
+    height: 236.47px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.propaganda > img{
+    width: 180px;
+    height: 180px;
+}
+
+.propaganda p{
+    width: 140px;
+    height: 23px;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 23px;
+    color: #232323;
+    overflow-y: hidden;
+}
+
+.propaganda  strong {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 23px;
+    color: #232323;
+}
