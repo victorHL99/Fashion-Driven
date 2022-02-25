@@ -2,14 +2,16 @@ let nomeUsuario = 0;
 let modeloSelecionado = null;
 let golaSelecionada = null;
 let tecidoSelecionado = null;
+let validadorUrl = false;
 
 
-/* function recolherNome() {
+
+function recolherNome() {
     nomeUsuario = prompt("Digite o seu nome")
 
 }
 recolherNome();
- */
+
 function selecionarModelo(classeBotãoModelo) {
     modeloSelecionado = document.querySelector(".modelo-selecionado")
     if (modeloSelecionado !== null) {
@@ -20,6 +22,7 @@ function selecionarModelo(classeBotãoModelo) {
     const modelo = document.querySelector("." + classeBotãoModelo);
     modelo.classList.add("modelo-selecionado")
     modeloSelecionado = modelo;
+    ativarBotao();
 }
 
 function selecionarGola(classeBotãoGola) {
@@ -31,6 +34,7 @@ function selecionarGola(classeBotãoGola) {
     const gola = document.querySelector("." + classeBotãoGola);
     gola.classList.add("gola-selecionado")
     golaSelecionada = gola;
+    ativarBotao();
 }
 
 function selecionarTecido(classeBotãoTecido) {
@@ -43,7 +47,7 @@ function selecionarTecido(classeBotãoTecido) {
     const tecido = document.querySelector("." + classeBotãoTecido);
     tecido.classList.add("tecido-selecionado")
     tecidoSelecionado = tecido;
-    setTimeout(ativarBotao, 200);
+    ativarBotao();
 }
 
 function confirmarPedido() {
@@ -51,16 +55,37 @@ function confirmarPedido() {
     console.log("teste")
 
     botaoConfirmacao.classList.add("confirmado")
+    mostrarRoupas();
+
+    let objeto = {
+        
+    }
+
 }
 
 
 function ativarBotao() {
-    if (modeloSelecionado !== null && golaSelecionada !== null && tecidoSelecionado !== null) {
+    if (validadorUrl=== true && modeloSelecionado !== null && golaSelecionada !== null && tecidoSelecionado !== null) {
 
         confirmarPedido();
+        
     } else {
         console.log("deu ruim")
     }
 
 }
 
+function validarInput() {
+    let url;
+    let input = document.querySelector("input").value
+
+    try {
+        url = new URL(input);
+    } catch (_) {
+        return false;
+    }
+    validadorUrl = true
+    ativarBotao();
+    console.log(url)
+    return url.protocol === "http:" || url.protocol === "https:";
+}

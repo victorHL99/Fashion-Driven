@@ -177,6 +177,10 @@ footer>p {
     align-items: center;
     justify-content: space-around;
     flex-wrap: wrap;
+    overflow-y: auto;
+    overflow-x: auto;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .propaganda {
@@ -194,8 +198,8 @@ footer>p {
 .imagem {
     width: 180px;
     height: 180px;
-    background-color: blue;
     overflow: hidden;
+    cursor: pointer;
 }
 
 .propaganda p {
