@@ -1,16 +1,17 @@
-*{
+* {
     box-sizing: border-box;
     overflow-x: hidden;
 }
 
 /*-------------- HEADER --------------*/
-header{
+header {
     width: 100vw;
     height: 89px;
     background-color: #404EED;
     display: flex;
     align-items: center;
 }
+
 header img {
     display: flex;
     margin-left: 80px;
@@ -18,11 +19,12 @@ header img {
 
 /*-------------- MAIN --------------*/
 
-main{
+main {
     display: flex;
     flex-direction: row;
 
 }
+
 .esquerda {
     width: 50%;
     height: 785px;
@@ -32,10 +34,102 @@ main{
     align-items: center;
 }
 
-.compras{
+.compras {
     width: 400.35px;
     height: 706.36px;
-    background-color: aquamarine;
+}
+
+.escolha {
+    margin-bottom: 31.12px;
+}
+
+.escolha p {
+    font-family: 'Roboto', sans-serif;
+    font-family: 143px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    color: #232323;
+    margin-bottom: 8.58px;
+}
+
+
+
+.container-circulos {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.circulo {
+    width: 100px;
+    height: 100px;
+    background-color: #F2F2F2;
+    border-radius: 50%;
+    border: 0.5px solid #C4C4C4;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+
+}
+
+.modelo-selecionado {
+    border: 3px solid #404EED;
+}
+
+.gola-selecionado {
+    border: 3px solid #404EED;
+}
+
+.tecido-selecionado {
+    border: 3px solid #404EED;
+}
+
+.colocar-link>p {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    color: #232323;
+    margin-bottom: 9.27px;
+}
+
+.colocar-link>input {
+    width: 396.27px;
+    height: 40px;
+    background: #F2F2F2;
+    border-radius: 10px;
+    margin-bottom: 23.76px;
+}
+
+.confirmacao {
+    width: 399px;
+    height: 40px;
+    background-color: #C4C4C4;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.confirmacao>p {
+    width: 155px;
+    height: auto;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 23px;
+    color: #FCFCFC;
+    overflow-y: hidden;
+}
+
+.confirmado {
+    background-color: #404EED;
 }
 
 .direita {
@@ -49,7 +143,7 @@ main{
 
 /*-------------- FOOTER --------------*/
 
-footer{
+footer {
     width: 100vw;
     height: 342px;
     background-color: #f2f2f2;
@@ -58,7 +152,7 @@ footer{
     justify-content: center;
 }
 
-footer >p{
+footer>p {
     width: 174px;
     height: 28px;
     margin-left: 121.99px;
@@ -74,16 +168,18 @@ footer >p{
     overflow-y: hidden;
 }
 
-.ultimos-pedidos{
+.ultimos-pedidos {
     width: 1074.17px;
     height: 236.47px;
-    margin-left: 118.76px; ;
+    margin-left: 118.76px;
     background-color: #F2F2F2;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
-.propaganda{
+
+.propaganda {
     width: 201.69px;
     height: 236.47px;
     background-color: #FFFFFF;
@@ -92,14 +188,17 @@ footer >p{
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    flex-wrap: wrap;
 }
 
-.propaganda > img{
+.imagem {
     width: 180px;
     height: 180px;
+    background-color: blue;
+    overflow: hidden;
 }
 
-.propaganda p{
+.propaganda p {
     width: 140px;
     height: 23px;
     font-family: 'Roboto', sans-serif;
@@ -110,7 +209,7 @@ footer >p{
     overflow-y: hidden;
 }
 
-.propaganda  strong {
+.propaganda strong {
     font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: bold;

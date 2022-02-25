@@ -27,7 +27,57 @@
         <!-- Main lado esquerdo-->
         <section class="esquerda">
             <div class="compras">
+                <div class="escolha">
+                    <p>Escolha o modelo</p>
+                    <div class="container-circulos">
+                        <div class="circulo tshirt" onclick="selecionarModelo('tshirt')">
+                            <img src="/FashionDriven/tshirt.png" alt="">
+                        </div>
+                        <div class="circulo camiseta" onclick="selecionarModelo('camiseta')">
+                            <img src="/FashionDriven/Camiseta.png" alt="">
+                        </div>
+                        <div class="circulo mangaLonga" onclick="selecionarModelo('mangaLonga')">
+                            <img src="/FashionDriven/Mangalonga.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="escolha">
+                    <p>Escolha a gola</p>
+                    <div class="container-circulos">
+                        <div class="circulo golaV" onclick="selecionarGola('golaV')">
+                            <img src="/FashionDriven/GolaV.png" alt="">
+                        </div>
+                        <div class="circulo golaRedonda" onclick="selecionarGola('golaRedonda')">
+                            <img src="/FashionDriven/GolaRedonda.png" alt="">
+                        </div>
+                        <div class="circulo golaPolo" onclick="selecionarGola('golaPolo')">
+                            <img src="/FashionDriven/GolaPolo.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="escolha">
+                    <p>Escolha o tecido</p>
+                    <div class="container-circulos">
+                        <div class="circulo seda" onclick="selecionarTecido('seda')">
+                            <img src="/FashionDriven/Seda.png" alt="">
+                        </div>
+                        <div class="circulo algodao" onclick="selecionarTecido('algodao')">
+                            <img src="/FashionDriven/Algodão.png" alt="">
+                        </div>
+                        <div class="circulo poliester" onclick="selecionarTecido('poliester')">
+                            <img src="/FashionDriven/Poliester.png" alt="">
+                        </div>
+                    </div>
+                </div>
 
+                <div class="colocar-link">
+                    <p>Imagem de referência</p>
+                    <input placeholder="Insira o link" type="text">
+                </div>
+
+                <div class="confirmacao">
+                    <p>Confirmar pedido</p>
+                </div>
             </div>
         </section>
         <!-- Main lado direito-->
@@ -39,28 +89,14 @@
     <footer>
         <p>Ultimos pedidos</p>
         <div class="ultimos-pedidos">
-            <div class="propaganda">
-                <img src="/FashionDriven/Blusa1.png" alt="Blusa Número 1">
-                <p><strong>Criador:</strong> Agata</p>
-            </div>
-            <div class="propaganda">
-                <img src="/FashionDriven/Blusa2.png" alt="Blusa Número 2">
-                <p><strong>Criador:</strong> Bruna</p>
-            </div>
-            <div class="propaganda">
-                <img src="/FashionDriven/Blusa3.png" alt="Blusa Número 3">
-                <p><strong>Criador:</strong> Camila</p>
-            </div>
-            <div class="propaganda">
-                <img src="/FashionDriven/Blusa4.png" alt="Blusa Número 4">
-                <p><strong>Criador:</strong> Daniel</p>
-            </div>
-            <div class="propaganda">
-                <img src="/FashionDriven/Blusa5.png" alt="Blusa Número 5">
-                <p><strong>Criador:</strong> Ester</p>
-            </div>
+            
         </div>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="JS/script.js"></script>
+    <script src="JS/script2.js"></script>
+
 </body>
 
 </html>
