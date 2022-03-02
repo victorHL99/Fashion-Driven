@@ -22,7 +22,7 @@ function mostrarRoupas(resposta) {
     for (i; i < resposta.data.length; i++) {
 
         containerRoupas.innerHTML += `
-            <div class="propaganda">
+            <div class="propaganda" onclick="confirmarCompra()">
                 <img class="imagem" src="${resposta.data[i].image}" alt="">
                 <p><strong>Criador:</strong> ${resposta.data[i].owner}</p>
             </div>
@@ -41,8 +41,8 @@ function requisicaoPostApi() {
         author: nomeUsuario
     }
     const promisePedido = axios.post(urlPost, objetoPedido)
-    promisePedido.then(console.log("será q funcionou???"))
-    promisePedido.catch(console.log("deu ruim"))
+    promisePedido.then(sucesso => alert("Sua encomenda foi realizada"))
+    promisePedido.catch(error => console.log("Ops, não conseguimos processar sua encomenda"))
 }
 
 
@@ -89,7 +89,6 @@ function selecionarTecido(classeBotãoTecido) {
 
 function confirmarPedido() {
     let botaoConfirmacao = document.querySelector(".confirmacao");
-    console.log("teste")
 
     botaoConfirmacao.classList.add("confirmado")
 
@@ -104,7 +103,6 @@ function ativarBotao() {
         confirmarPedido();
 
     } else {
-        console.log("deu ruim")
     }
 
 }
@@ -121,14 +119,18 @@ function validarInput() {
     }
     validadorUrl = true
     ativarBotao();
-    console.log(url)
     return url.protocol === "http:" || url.protocol === "https:";
 }
 
 function soltarAlerta() {
     let possuiConfirmacao = document.querySelector(".confirmacao")
     if (possuiConfirmacao.classList.contains("confirmado")) {
+        confirm("Deseja efetuar a compra?")
         requisicaoPostApi();
         requisicaoGetApi();
     }
+}
+
+function confirmarCompra(){
+    confirm("Deseja realizar o pedido?")
 }
