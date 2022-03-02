@@ -7,11 +7,13 @@ let golaSelecionada = null;
 let tecidoSelecionado = null;
 let validadorUrl = false;
 let urlInput = null;
+let roupaComprada = null;
 
 
 function requisicaoGetApi() {
     const promiseRoupas = axios.get(urlGet)
     promiseRoupas.then(mostrarRoupas)
+    console.log("teste")
 }
 requisicaoGetApi();
 
@@ -19,16 +21,18 @@ function mostrarRoupas(resposta) {
     let i = 0;
     let containerRoupas = document.querySelector(".ultimos-pedidos")
 
-    for (i; i < resposta.data.length; i++) {
+    for (i; i < 10; i++) {
 
         containerRoupas.innerHTML += `
-            <div class="propaganda" onclick="confirmarCompra()">
+            <div class="propaganda" id="${i}" onclick="confirmarCompra(id)">
                 <img class="imagem" src="${resposta.data[i].image}" alt="">
                 <p><strong>Criador:</strong> ${resposta.data[i].owner}</p>
             </div>
         `
-
     }
+    roupaComprada = resposta.data
+
+    console.log(roupaComprada);
 }
 
 function requisicaoPostApi() {
@@ -89,22 +93,14 @@ function selecionarTecido(classeBotãoTecido) {
 
 function confirmarPedido() {
     let botaoConfirmacao = document.querySelector(".confirmacao");
-
     botaoConfirmacao.classList.add("confirmado")
-
     mostrarRoupas();
-
 }
-
 
 function ativarBotao() {
     if (validadorUrl === true && modeloSelecionado !== null && golaSelecionada !== null && tecidoSelecionado !== null) {
-
         confirmarPedido();
-
-    } else {
-    }
-
+    } else {}
 }
 
 function validarInput() {
@@ -125,12 +121,38 @@ function validarInput() {
 function soltarAlerta() {
     let possuiConfirmacao = document.querySelector(".confirmacao")
     if (possuiConfirmacao.classList.contains("confirmado")) {
-        confirm("Deseja efetuar a compra?")
-        requisicaoPostApi();
-        requisicaoGetApi();
+        let confirmacaoSuaCompra = confirm("Deseja efetuar a compra?")
+        if (confirmacaoSuaCompra) {
+            requisicaoPostApi();
+            requisicaoGetApi();
+        }
     }
 }
 
-function confirmarCompra(){
-    confirm("Deseja realizar o pedido?")
+function confirmarCompra(roupa) {
+    console.log(roupa);
+    let novaCompra = {
+        model: roupaComprada[roupa].model,
+        neck: roupaComprada[roupa].neck,
+        material: roupaComprada[roupa].material,
+        image: roupaComprada[roupa].image,
+        owner: nomeUsuario,
+        author: roupaComprada[roupa].owner
+    }
+    console.log(novaCompra)
+
+
+    let statusCompra = confirm("Deseja realizar o pedido?")
+    if (statusCompra) {
+        alert("Sua compra foi confirmada com sucesso")
+        let promise = axios.post(urlPost, novaCompra)
+        promise.then(sucesso => {
+            console.log(roupaComprada[roupa])
+            requisicaoGetApi();
+        })
+        promise.catch(error => {
+            alert("deu ruim")
+        })
+
+    }
 }
