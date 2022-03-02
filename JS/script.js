@@ -1,9 +1,49 @@
+const urlGet = "https://mock-api.driven.com.br/api/v4/shirts-api/shirts"
+const urlPost = "https://mock-api.driven.com.br/api/v4/shirts-api/shirts"
 let nomeUsuario = 0;
 let modeloSelecionado = null;
+let idModeloSelecionado = null;
 let golaSelecionada = null;
 let tecidoSelecionado = null;
 let validadorUrl = false;
+let urlInput = null;
 
+
+function requisicaoGetApi() {
+    const promiseRoupas = axios.get(urlGet)
+    promiseRoupas.then(mostrarRoupas)
+}
+requisicaoGetApi();
+
+function mostrarRoupas(resposta) {
+    let i = 0;
+    let containerRoupas = document.querySelector(".ultimos-pedidos")
+
+    for (i; i < resposta.data.length; i++) {
+
+        containerRoupas.innerHTML += `
+            <div class="propaganda">
+                <img class="imagem" src="${resposta.data[i].image}" alt="">
+                <p><strong>Criador:</strong> ${resposta.data[i].owner}</p>
+            </div>
+        `
+
+    }
+}
+
+function requisicaoPostApi() {
+    let objetoPedido = {
+        model: modeloSelecionado,
+        neck: golaSelecionada,
+        material: tecidoSelecionado,
+        image: urlInput,
+        owner: nomeUsuario,
+        author: nomeUsuario
+    }
+    const promisePedido = axios.post(urlPost, objetoPedido)
+    promisePedido.then(console.log("será q funcionou???"))
+    promisePedido.catch(console.log("deu ruim"))
+}
 
 
 function recolherNome() {
@@ -14,14 +54,13 @@ recolherNome();
 
 function selecionarModelo(classeBotãoModelo) {
     modeloSelecionado = document.querySelector(".modelo-selecionado")
+
     if (modeloSelecionado !== null) {
         modeloSelecionado.classList.remove("modelo-selecionado");
     }
-
-
+    modeloSelecionado = classeBotãoModelo;
     const modelo = document.querySelector("." + classeBotãoModelo);
     modelo.classList.add("modelo-selecionado")
-    modeloSelecionado = modelo;
     ativarBotao();
 }
 
@@ -30,10 +69,9 @@ function selecionarGola(classeBotãoGola) {
     if (golaSelecionada !== null) {
         golaSelecionada.classList.remove("gola-selecionado");
     }
-
+    golaSelecionada = classeBotãoGola;
     const gola = document.querySelector("." + classeBotãoGola);
     gola.classList.add("gola-selecionado")
-    golaSelecionada = gola;
     ativarBotao();
 }
 
@@ -43,10 +81,9 @@ function selecionarTecido(classeBotãoTecido) {
         tecidoSelecionado.classList.remove("tecido-selecionado");
     }
 
-
+    tecidoSelecionado = classeBotãoTecido;
     const tecido = document.querySelector("." + classeBotãoTecido);
     tecido.classList.add("tecido-selecionado")
-    tecidoSelecionado = tecido;
     ativarBotao();
 }
 
@@ -55,20 +92,17 @@ function confirmarPedido() {
     console.log("teste")
 
     botaoConfirmacao.classList.add("confirmado")
-    mostrarRoupas();
 
-    let objeto = {
-        
-    }
+    mostrarRoupas();
 
 }
 
 
 function ativarBotao() {
-    if (validadorUrl=== true && modeloSelecionado !== null && golaSelecionada !== null && tecidoSelecionado !== null) {
+    if (validadorUrl === true && modeloSelecionado !== null && golaSelecionada !== null && tecidoSelecionado !== null) {
 
         confirmarPedido();
-        
+
     } else {
         console.log("deu ruim")
     }
@@ -78,6 +112,7 @@ function ativarBotao() {
 function validarInput() {
     let url;
     let input = document.querySelector("input").value
+    urlInput = input;
 
     try {
         url = new URL(input);
@@ -88,4 +123,12 @@ function validarInput() {
     ativarBotao();
     console.log(url)
     return url.protocol === "http:" || url.protocol === "https:";
+}
+
+function soltarAlerta() {
+    let possuiConfirmacao = document.querySelector(".confirmacao")
+    if (possuiConfirmacao.classList.contains("confirmado")) {
+        requisicaoPostApi();
+        requisicaoGetApi();
+    }
 }
